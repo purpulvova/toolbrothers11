@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToolBrothers | Handyman Services</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      color: #1c1c1c;
+      transition: background 0.7s;
+    }
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 28px 20px 28px 20px;
+      text-align: center;
+      position: relative;
+      border-bottom-left-radius: 2.5rem;
+      border-bottom-right-radius: 2.5rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 78, 121, 0.18);
+      animation: dropDown 1s cubic-bezier(.77,0,.18,1) 0.2s 1 both;
+    }
+    @keyframes dropDown {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .logo-top {
+      width: 110px;
+      margin-bottom: 14px;
+      border-radius: 20px;
+      border: 3px solid #f7f9fc;
+      background: white;
+      animation: pulse 2s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(31,78,121,0.1); }
+      100% { box-shadow: 0 0 25px 0 rgba(31,78,121,0.18); }
+    }
+    .top-buttons {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      z-index: 1;
+    }
+    .button-link {
+      padding: 10px 18px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+      font-weight: 500;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .button-link:hover {
+      transform: scale(1.06) translateY(-2px);
+      opacity: 0.9;
+    }
+    .btn-instagram { background-color: #E1306C; }
+    .btn-email { background-color: #0072c6; }
+    .btn-whatsapp { background-color: #25D366; }
+
+    .hero {
+      position: relative;
+      height: 350px;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 2rem;
+      margin: 30px 20px 30px 20px;
+      animation: fadeIn 1s 0.5s both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.7) blur(1px);
+    }
+    .hero-content {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 32px 26px;
+      border-radius: 22px;
+      box-shadow: 0 4px 18px 0 rgba(31,78,121,0.13);
+      animation: slideUp 1s 1s both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(70px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section {
+      padding: 50px 20px 30px 20px;
+      animation: fadeIn 1.2s 1.2s both;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 32px;
+      letter-spacing: 2px;
+      font-size: 2rem;
+    }
+    .services, .reasons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      animation: fadeIn 1.2s 1.5s both;
+    }
+    .service, .reason {
+      background: white;
+      padding: 28px 16px 22px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(31,78,121,0.08);
+      width: 240px;
+      text-align: center;
+      font-size: 1.18rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .service:hover, .reason:hover {
+      box-shadow: 0 8px 32px 0 #1f4e7944;
+      transform: translateY(-6px) scale(1.04);
+    }
+    .service-emoji, .reason-emoji {
+      font-size: 2.1rem;
+      margin-bottom: 14px;
+      animation: bounceEmoji 2s infinite alternate;
+    }
+    @keyframes bounceEmoji {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-12px); }
+    }
+    .contacts {
+      background-color: #1f4e79;
+      color: white;
+      padding: 40px 20px 36px 20px;
+      text-align: center;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      box-shadow: 0 -2px 28px 0 rgba(31,78,121,0.09);
+      margin-top: 40px;
+    }
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .contact-buttons a {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .contact-buttons a:hover {
+      transform: scale(1.08) translateY(-3px);
+      opacity: 0.9;
+    }
+    footer {
+      text-align: right;
+      padding: 12px 26px 12px 0;
+      background-color: #f7f9fc;
+      font-size: 1rem;
+      color: #607d8b;
+      border-top: 1px solid #e0e5ee;
+      letter-spacing: 1px;
+    }
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+      transition: 0.3s ease;
+    }
+    a:hover {
+      opacity: 0.8;
+    }
+    .middle-banner {
+      text-align: center;
+      margin: 48px 0 28px 0;
+      animation: fadeIn 1.3s 1.3s both;
+    }
+    .middle-banner img {
+      max-width: 340px;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(31,78,121,0.06);
+    }
+    /* Reviews Section */
+    .reviews-section {
+      padding: 54px 18px 36px 18px;
+      background: #fff7e6;
+      border-radius: 2rem;
+      margin: 0 18px 40px 18px;
+      box-shadow: 0 2px 24px #ffb04917;
+      animation: fadeIn 1.3s 1.5s both;
+    }
+    .reviews-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #de6800;
+    }
+    .reviews-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+    }
+    .review {
+      background: #fff;
+      padding: 26px 22px;
+      border-radius: 14px;
+      width: 300px;
+      box-shadow: 0 2px 14px #ffb04913;
+      font-size: 1.06rem;
+      color: #333;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      animation: fadeIn 1.3s 1.7s both;
+      border-left: 6px solid #ffb049;
+      min-height: 110px;
+    }
+    .review::before {
+      content: '⭐️';
+      font-size: 1.2rem;
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      color: #ffb049;
+    }
+    .review-city {
+      font-size: 0.97rem;
+      color: #de6800;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .review-author {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 7px;
+      color: #1f4e79;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .services, .reasons, .reviews-list { flex-direction: column; gap: 14px; }
+      .section, .reviews-section { padding: 30px 4vw 20px 4vw; }
+      .middle-banner { margin: 24px 0 18px 0; }
+      .hero { margin: 16px 4vw; height: 210px; border-radius: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-buttons">
+      <a class="button-link btn-whatsapp" href="https://wa.me/" target="_blank">WhatsApp</a>
+      <a class="button-link btn-email" href="mailto:toolbrothers@aol.com">Email</a>
+      <a class="button-link btn-instagram" href="https://www.instagram.com/tool.brothers/" target="_blank">Instagram</a>
+    </div>
+    <img src="logo.png" alt="ToolBrothers Logo" class="logo-top" />
+    <h1>ToolBrothers</h1>
+    <p>Fast, Honest & Quality Handyman Work</p>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="https://cdn.coverr.co/videos/coverr-a-new-house-construction-8579/1080p.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>Professional Interior Handyman Services</h1>
+      <p>From drywall to toilets — we handle it all with experience and care.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service"><span class="service-emoji">🔧</span> Small Repairs</div>
+      <div class="service"><span class="service-emoji">🎨</span> Painting & Finishing</div>
+      <div class="service"><span class="service-emoji">🚽</span> Plumbing (Toilets, Faucets)</div>
+      <div class="service"><span class="service-emoji">💡</span> Light Electrical Work</div>
+      <div class="service"><span class="service-emoji">🚪</span> Door Installation</div>
+      <div class="service"><span class="service-emoji">🧰</span> Furniture Assembly</div>
+    </div>
+  </section>
+
+  <div class="middle-banner">
+    <img src="banner.png" alt="Quality Work You Can Trust">
+    <p style="font-size:1.12rem;margin-top:10px;"><strong>Quality Work You Can Trust</strong></p>
+  </div>
+
+  <section class="section">
+    <h2>Why Choose Us</h2>
+    <div class="reasons">
+      <div class="reason"><span class="reason-emoji">🌎</span> International Experience</div>
+      <div class="reason"><span class="reason-emoji">⚡️</span> Fast and Honest Work</div>
+      <div class="reason"><span class="reason-emoji">🛠️</span> High Quality Guaranteed</div>
+      <div class="reason"><span class="reason-emoji">💯</span> Warranty on All Jobs</div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section">
+    <h2 class="reviews-title">What Our Clients Say</h2>
+    <div class="reviews-list">
+      <div class="review">
+        "Best handyman service in Miami! Quick, friendly, and very professional. Highly recommend!"
+        <span class="review-city">Miami, FL</span>
+        <span class="review-author">– Emily C.</span>
+      </div>
+      <div class="review">
+        "Called ToolBrothers for some drywall repairs and painting. Everything was done perfectly and fast!"
+        <span class="review-city">Fort Lauderdale, FL</span>
+        <span class="review-author">– Alex R.</span>
+      </div>
+      <div class="review">
+        "Super honest and always on time. Will call again for any house projects!"
+        <span class="review-city">Boca Raton, FL</span>
+        <span class="review-author">– John S.</span>
+      </div>
+      <div class="review">
+        "Great price and outstanding quality. My new go-to handyman."
+        <span class="review-city">Hollywood, FL</span>
+        <span class="review-author">– Sandra M.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts">
+    <h2>Contact Us</h2>
+    <p>📍 Miami & Fort Lauderdale, FL</p>
+    <div class="contact-buttons">
+      <a class="btn-whatsapp" href="https://wa.me/" target="_blank">Chat on WhatsApp</a>
+      <a class="btn-email" href="mailto:toolbrothers@aol.com">Email Us</a>
+      <a class="btn-instagram" href="https://www.instagram.com/tool.brothers/" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>ToolBrothers &copy; 2025</p>
+  </footer>
+
+  <script>
+    // Add simple animation to reviews on scroll
+    const reviews = document.querySelectorAll('.review');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.9;
+      reviews.forEach((review, i) => {
+        const boxTop = review.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          review.style.opacity = 1;
+          review.style.transform = 'translateY(0)';
+        } else {
+          review.style.opacity = 0.2;
+          review.style.transform = 'translateY(50px)';
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+    // Animate emojis
+    document.querySelectorAll('.service-emoji, .reason-emoji').forEach(el => {
+      el.addEventListener('mouseenter', () => el.style.transform = 'scale(1.27)');
+      el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
+    });
+  </script>
+</body>
+</html>

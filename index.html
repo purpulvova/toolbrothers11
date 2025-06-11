@@ -384,6 +384,27 @@
 }
 .cta-btn-modal:hover { background: #b32d18; }
 
+  .video-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: 2rem;
+}
+.video-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(30,40,60,0.4); /* затемнение */
+  z-index: 1;
+  border-radius: 2rem;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  padding-top: 90px;
+}  
   </style>
 </head>
 <body>
@@ -501,13 +522,18 @@
 }
 </style>
 
-<section class="hero" style="background: url('background-room.jpg') center/cover no-repeat; position:relative; height:370px;">
-  <div style="background:rgba(30,40,60,0.65); position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; border-radius:2rem;"></div>
-  <div class="hero-content" style="position:relative; z-index:2;">
+<section class="hero" style="position:relative; height:400px;">
+  <video autoplay loop muted playsinline class="video-bg">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+  <div class="hero-content">
     <h1>Professional Interior Handyman Services</h1>
-    <p>From drywall to toilets — we handle it all with experience and care.</p>
+    <p>From drywall to furniture assembly — always clean, fast, and reliable. Quality work every time.</p>
   </div>
 </section>
+
 
 
   <section class="section">

@@ -270,6 +270,120 @@
       .middle-banner { margin: 24px 0 18px 0; }
       .hero { margin: 16px 4vw; height: 210px; border-radius: 1rem; }
     }
+.cta-contact-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin: 0 auto 12px auto;
+  padding: 22px 0 8px 0;
+}
+.cta-phone {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1c1c1c;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 10px 18px;
+  transition: box-shadow 0.22s, background 0.2s;
+  border: 2px solid #122148;
+}
+.cta-phone:hover {
+  background: #ffb04922;
+  box-shadow: 0 3px 16px #ffb04944;
+}
+.cta-phone-icon {
+  font-size: 2.1rem;
+  margin-right: 12px;
+}
+.cta-phone-num {
+  letter-spacing: 1.5px;
+}
+.cta-btn {
+  background: #d5422b;
+  color: #fff;
+  border: 2px solid #122148;
+  border-radius: 10px;
+  padding: 13px 38px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px #d5422b33;
+}
+.cta-btn:hover { background: #b32d18; }
+
+/* Modal */
+.cta-modal-bg {
+  position: fixed;
+  z-index: 99999;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,30,40,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-modal {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 38px #d5422b22;
+  padding: 38px 30px 24px 30px;
+  max-width: 350px;
+  width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cta-modal-title {
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #d5422b;
+  margin-bottom: 26px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.cta-modal-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d5422b;
+  cursor: pointer;
+  font-weight: bold;
+}
+#orderForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+#orderForm input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #ececec;
+  font-size: 1.13rem;
+  margin-bottom: 5px;
+}
+.cta-btn-modal {
+  background: #d5422b;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 20px;
+  font-size: 1.18rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px #d5422b22;
+}
+.cta-btn-modal:hover { background: #b32d18; }
+
   </style>
 </head>
 <body>
@@ -288,6 +402,28 @@
   </div>
     
 </header>
+
+  <!-- Блок звонка и кнопки -->
+<div class="cta-contact-block">
+  <a class="cta-phone" href="tel:19412735642">
+    <span class="cta-phone-icon">📞</span>
+    <span class="cta-phone-num">(941) 273-5642</span>
+  </a>
+  <button class="cta-btn" onclick="openOrderModal()">Get Started</button>
+</div>
+
+<!-- Модальное окно для заказа -->
+<div class="cta-modal-bg" id="ctaModalBg" style="display:none;">
+  <div class="cta-modal">
+    <button class="cta-modal-close" onclick="closeOrderModal()">&times;</button>
+    <div class="cta-modal-title">Start Your Project</div>
+    <form id="orderForm" onsubmit="return sendToWhatsApp();">
+      <input type="text" id="clientName" placeholder="Your Name" required />
+      <input type="text" id="clientZip" placeholder="ZIP Code" required maxlength="10" />
+      <button class="cta-btn-modal" type="submit">Contact via WhatsApp</button>
+    </form>
+  </div>
+</div>
 
 <style>
 .header-modern {
@@ -495,6 +631,21 @@ document.addEventListener('DOMContentLoaded', () => showGalleryImg(0));
       el.addEventListener('mouseenter', () => el.style.transform = 'scale(1.27)');
       el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
     });
+    function openOrderModal() {
+  document.getElementById('ctaModalBg').style.display = 'flex';
+}
+function closeOrderModal() {
+  document.getElementById('ctaModalBg').style.display = 'none';
+}
+function sendToWhatsApp() {
+  const name = document.getElementById('clientName').value;
+  const zip = document.getElementById('clientZip').value;
+  const phone = '19412735642';
+  const msg = encodeURIComponent(`Hello! My name is ${name} and my ZIP code is ${zip}. I want to start my project.`);
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+  closeOrderModal();
+  return false;
+}
   </script>
 </body>
 </html>

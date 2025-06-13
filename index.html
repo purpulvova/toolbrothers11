@@ -590,7 +590,43 @@
   .service-map-img { border-radius: 11px; }
   .map-pin span { font-size: 0.85rem; padding: 2px 7px; }
 }
-  </style>
+
+<style>
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+.service-btn {
+  min-width: 220px;
+  min-height: 120px;
+  font-size: 1.34rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 24px #0b0d1c18;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, box-shadow 0.2s;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 0 26px;
+  margin-bottom: 12px;
+}
+.service-btn:hover, .service-btn:focus {
+  transform: scale(1.07);
+  box-shadow: 0 12px 32px #1e73fa36;
+  background: #e7f3ff;
+}
+@media (max-width: 800px) {
+  .services-list { gap: 18px; }
+  .service-btn { min-width: 145px; min-height: 78px; font-size: 1rem; }
+}
+</style>
   
 </head>
 <body>
@@ -721,18 +757,17 @@
 </section>
 
 
-
   <section class="section">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service"><span class="service-emoji">🔧</span> Small Repairs</div>
-      <div class="service"><span class="service-emoji">🎨</span> Painting & Finishing</div>
-      <div class="service"><span class="service-emoji">🚽</span> Plumbing (Toilets, Faucets)</div>
-      <div class="service"><span class="service-emoji">💡</span> Light Electrical Work</div>
-      <div class="service"><span class="service-emoji">🚪</span> Door Installation</div>
-      <div class="service"><span class="service-emoji">🧰</span> Furniture Assembly</div>
-    </div>
-  </section>
+  <h2>Our Services</h2>
+  <div class="services-list">
+    <button class="service-btn" data-service="Small Repairs">🔧 Small Repairs</button>
+    <button class="service-btn" data-service="Painting & Finishing">🎨 Painting & Finishing</button>
+    <button class="service-btn" data-service="Plumbing (Toilets, Faucets)">🚽 Plumbing (Toilets, Faucets)</button>
+    <button class="service-btn" data-service="Light Electrical Work">💡 Light Electrical Work</button>
+    <button class="service-btn" data-service="Door Installation">🚪 Door Installation</button>
+    <button class="service-btn" data-service="Furniture Assembly">🧰 Furniture Assembly</button>
+  </div>
+</section>
 
   <section class="service-area-section">
   <h2>Where We Work</h2>
@@ -874,5 +909,14 @@ function sendToWhatsApp() {
   return false;
 }
   </script>
+
+<script>
+  document.querySelectorAll('.service-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.getElementById('getStartedModal').style.display = 'block';
+    });
+  });
+</script>
+
 </body>
 </html>

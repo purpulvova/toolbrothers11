@@ -737,22 +737,7 @@
   <section class="service-area-section">
   <h2>Where We Work</h2>
   <div class="map-area">
-    <img src="service-mapflorida.png" alt="Service Area Map" class="service-map-img" />
-    <div class="map-pin miami">
-      <span>Miami</span>
-      <div class="pin-dot"></div>
-    </div>
-    <div class="map-pin lauderdale">
-      <span>Fort Lauderdale</span>
-      <div class="pin-dot"></div>
-    </div>
-    <div class="map-pin boca">
-      <span>Boca Raton</span>
-      <div class="pin-dot"></div>
-    </div>
-  </div>
-  <div class="map-legend">
-    <span class="legend-dot"></span> Our Service Area: Miami — Fort Lauderdale — Boca Raton
+    <img src="map-work-area-v2.png" alt="Service Area Map" class="service-map-img" />
   </div>
 </section>
 
@@ -762,78 +747,22 @@
   text-align: center;
 }
 .map-area {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.service-map-img {
   width: 96vw;
   max-width: 560px;
   min-width: 220px;
-  margin: 0 auto 14px auto;
-}
-.service-map-img {
-  width: 100%;
   border-radius: 17px;
   box-shadow: 0 4px 22px #0b0d1c18;
 }
-.map-pin {
-  position: absolute;
-  transform: translate(-50%, -100%);
-  z-index: 2;
-  text-align: center;
-}
-.map-pin span {
-  background: #fff;
-  color: #143e61;
-  font-weight: 600;
-  font-size: 0.96rem;
-  border-radius: 7px;
-  padding: 2px 9px 2px 9px;
-  box-shadow: 0 1px 7px #19234d16;
-}
-.pin-dot {
-  width: 15px;
-  height: 15px;
-  background: #e32e1c;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin: 4px auto 0 auto;
-  box-shadow: 0 0 15px 4px #fa3731b7, 0 0 35px 12px #fa37312a;
-  animation: pinGlow 1.6s infinite alternate;
-}
-@keyframes pinGlow {
-  0%   { box-shadow: 0 0 12px 2px #fa3731a5, 0 0 22px 8px #fa37312a; }
-  100% { box-shadow: 0 0 21px 7px #fa3731d9, 0 0 44px 15px #fa37314a; }
-}
-/* -------- FIXED PIN LOCATIONS ---------- */
-.map-pin.miami { left: 20.5%; top: 91.6%; }
-.map-pin.lauderdale { left: 45.6%; top: 85.3%; }
-.map-pin.boca { left: 65.8%; top: 21.5%; }
-/* --------------------------------------- */
-.map-legend {
-  margin-top: 8px;
-  font-size: 1rem;
-  color: #304055;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  background: #e32e1c;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 10px 2px #fa373166;
-}
 @media (max-width: 600px) {
-  .map-area { max-width: 97vw; }
   .service-map-img { border-radius: 11px; }
-  .map-pin span { font-size: 0.85rem; padding: 2px 7px; }
+  .map-area { max-width: 97vw; }
 }
 </style>
-
-
-
   
 <!-- Gallery Section -->
 <section class="gallery-section">

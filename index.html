@@ -756,7 +756,7 @@
   </div>
 </section>
 
-<!-- SERVICES SECTION (GRID, 3x2) -->
+<!-- SERVICES SECTION (GRID, 3x2, MOBILE FRIENDLY) -->
 <section class="services-section">
   <h2>Our Services</h2>
   <div class="services-list">
@@ -776,10 +776,10 @@
 }
 .services-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   justify-content: center;
-  max-width: 870px;
+  max-width: 900px;
   margin: 30px auto 0 auto;
 }
 .service-btn {
@@ -788,7 +788,7 @@
   outline: none;
   border-radius: 22px;
   padding: 32px 14px 26px 14px;
-  font-size: 1.26rem;
+  font-size: 1.22rem;
   font-family: inherit;
   font-weight: 500;
   box-shadow: 0 6px 24px #07133918;
@@ -805,12 +805,28 @@
   user-select: none;
 }
 .service-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 .service-btn:hover, .service-btn:focus {
   box-shadow: 0 12px 32px #15386722, 0 2px 0 #4689ff22;
 }
+@media (max-width: 900px) {
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .services-list {
+    grid-template-columns: 1fr;
+    max-width: 98vw;
+  }
+  .service-btn {
+    font-size: 1.09rem;
+    padding: 26px 7px 20px 7px;
+  }
+}
 </style>
+
   
 <!-- Gallery Section -->
 <section class="gallery-section">
@@ -930,17 +946,28 @@ function sendToWhatsApp() {
 </script>
   
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const serviceBtns = document.querySelectorAll('.service-btn');
-  serviceBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Триггерим открытие формы (как на Get Started)
-      const getStartedBtn = document.querySelector('.get-started-btn');
-      if(getStartedBtn) getStartedBtn.click();
-    });
+// 1. Находим все кнопки сервисов — у них должен быть класс "service-btn"
+const serviceBtns = document.querySelectorAll('.service-btn');
+serviceBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Открываем модальное окно заказа
+    document.getElementById('ctaModalBg').style.display = 'flex';
   });
 });
+
+// --- твой старый код закрытия и отправки:
+function closeOrderModal() {
+  document.getElementById('ctaModalBg').style.display = 'none';
+}
+function sendToWhatsApp() {
+  const name = document.getElementById('clientName').value;
+  const zip = document.getElementById('clientZip').value;
+  const phone = '1XXXXXXXXXX'; // ← Твой номер для WhatsApp
+  const message = `Hi! My name is ${name}, ZIP: ${zip}.`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+}
 </script>
+
 
 </body>
 </html>

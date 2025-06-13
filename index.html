@@ -756,46 +756,59 @@
   </div>
 </section>
 
-
-  <section class="section">
+<!-- SERVICES SECTION (GRID, 3x2) -->
+<section class="services-section">
   <h2>Our Services</h2>
   <div class="services-list">
-    <button class="service-btn" data-service="Small Repairs">🔧 Small Repairs</button>
-    <button class="service-btn" data-service="Painting & Finishing">🎨 Painting & Finishing</button>
-    <button class="service-btn" data-service="Plumbing (Toilets, Faucets)">🚽 Plumbing (Toilets, Faucets)</button>
-    <button class="service-btn" data-service="Light Electrical Work">💡 Light Electrical Work</button>
-    <button class="service-btn" data-service="Door Installation">🚪 Door Installation</button>
-    <button class="service-btn" data-service="Furniture Assembly">🧰 Furniture Assembly</button>
-  </div>
-</section>
-
-  <section class="service-area-section">
-  <h2>Where We Work</h2>
-  <div class="map-area">
-    <img src="map-work-area-v2.png" alt="Service Area Map" class="service-map-img" />
+    <button class="service-btn" type="button">🔧 Small Repairs</button>
+    <button class="service-btn" type="button">🎨 Painting & Finishing</button>
+    <button class="service-btn" type="button">🚽 Plumbing (Toilets, Faucets)</button>
+    <button class="service-btn" type="button">💡 Light Electrical Work</button>
+    <button class="service-btn" type="button">🚪 Door Installation</button>
+    <button class="service-btn" type="button">🧰 Furniture Assembly</button>
   </div>
 </section>
 
 <style>
-.service-area-section {
-  margin: 44px 0 40px 0;
+.services-section {
   text-align: center;
+  margin: 60px 0 40px 0;
 }
-.map-area {
-  display: flex;
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
   justify-content: center;
+  max-width: 870px;
+  margin: 30px auto 0 auto;
+}
+.service-btn {
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 22px;
+  padding: 32px 14px 26px 14px;
+  font-size: 1.26rem;
+  font-family: inherit;
+  font-weight: 500;
+  box-shadow: 0 6px 24px #07133918;
+  cursor: pointer;
+  transition: box-shadow 0.24s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  user-select: none;
 }
-.service-map-img {
-  width: 96vw;
-  max-width: 560px;
-  min-width: 220px;
-  border-radius: 17px;
-  box-shadow: 0 4px 22px #0b0d1c18;
+.service-btn:active {
+  transform: scale(0.96);
 }
-@media (max-width: 600px) {
-  .service-map-img { border-radius: 11px; }
-  .map-area { max-width: 97vw; }
+.service-btn:hover, .service-btn:focus {
+  box-shadow: 0 12px 32px #15386722, 0 2px 0 #4689ff22;
 }
 </style>
   
@@ -914,6 +927,19 @@ function sendToWhatsApp() {
       document.getElementById('getStartedModal').style.display = 'block';
     });
   });
+</script>
+  
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const serviceBtns = document.querySelectorAll('.service-btn');
+  serviceBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Триггерим открытие формы (как на Get Started)
+      const getStartedBtn = document.querySelector('.get-started-btn');
+      if(getStartedBtn) getStartedBtn.click();
+    });
+  });
+});
 </script>
 
 </body>
